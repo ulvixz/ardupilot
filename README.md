@@ -1,161 +1,213 @@
-# ArduPilot Project
+# TEMP WIP README
+Good luck wıth the Turkısh lol
 
-<a href="https://ardupilot.org/discord"><img src="https://img.shields.io/discord/674039678562861068.svg" alt="Discord">
 
-[![Test Copter](https://github.com/ArduPilot/ardupilot/workflows/test%20copter/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_sitl_copter.yml) [![Test Plane](https://github.com/ArduPilot/ardupilot/workflows/test%20plane/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_sitl_plane.yml) [![Test Rover](https://github.com/ArduPilot/ardupilot/workflows/test%20rover/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_sitl_rover.yml) [![Test Sub](https://github.com/ArduPilot/ardupilot/workflows/test%20sub/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_sitl_sub.yml) [![Test Tracker](https://github.com/ArduPilot/ardupilot/workflows/test%20tracker/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_sitl_tracker.yml)
+```
 
-[![Test AP_Periph](https://github.com/ArduPilot/ardupilot/workflows/test%20ap_periph/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_sitl_periph.yml) [![Test Chibios](https://github.com/ArduPilot/ardupilot/workflows/test%20chibios/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_chibios.yml) [![Test Linux SBC](https://github.com/ArduPilot/ardupilot/workflows/test%20Linux%20SBC/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_linux_sbc.yml) [![Test Replay](https://github.com/ArduPilot/ardupilot/workflows/test%20replay/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_replay.yml)
 
-[![Test Unit Tests](https://github.com/ArduPilot/ardupilot/workflows/test%20unit%20tests/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_unit_tests.yml) [![test size](https://github.com/ArduPilot/ardupilot/actions/workflows/test_size.yml/badge.svg)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_size.yml)
+source ~/colcon_ws/install/setup.bash
+ros2 run ros_tcp_endpoint default_server_endpoint
 
-[![Test Environment Setup](https://github.com/ArduPilot/ardupilot/actions/workflows/test_environment.yml/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_environment.yml)
+cd /home/kaplan/colcon_ws/src/smarc2
+chmod +x 
+python3 
 
-[![Cygwin Build](https://github.com/ArduPilot/ardupilot/actions/workflows/cygwin_build.yml/badge.svg)](https://github.com/ArduPilot/ardupilot/actions/workflows/cygwin_build.yml) [![Macos Build](https://github.com/ArduPilot/ardupilot/actions/workflows/macos_build.yml/badge.svg)](https://github.com/ArduPilot/ardupilot/actions/workflows/macos_build.yml)
+kolu bağlamak için:
+-unity aç
+-köprüyü aç : ros2 run  ros_tcp_endpoint default_server_endpoint 
+-kolu aç: ros2 run joy joy_node --ros-args -p deadzone:=0.08 -p autorepeat_rate:=20.0
+-kodu başlat: python3 ps5....
 
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/5331/badge.svg)](https://scan.coverity.com/projects/ardupilot-ardupilot)
 
-[![Test Coverage](https://github.com/ArduPilot/ardupilot/actions/workflows/test_coverage.yml/badge.svg?branch=master)](https://github.com/ArduPilot/ardupilot/actions/workflows/test_coverage.yml)
+mavros başlat:
+# ROS 2 ve MAVROS workspace'ini aç:
+source /opt/ros/jazzy/setup.bash
 
-[![Autotest Status](https://autotest.ardupilot.org/autotest-badge.svg)](https://autotest.ardupilot.org/)
+# MAVROS'u başlat:
+ros2 run mavros mavros_node \
+  --ros-args \
+  -p 'fcu_url:=udp://0.0.0.0:14551@'
 
-ArduPilot is the most advanced, full-featured, and reliable open source autopilot software available.
-It has been under development since 2010 by a diverse team of professional engineers, computer scientists, and community contributors.
-Our autopilot software is capable of controlling almost any vehicle system imaginable, from conventional airplanes, quad planes, multi-rotors, and helicopters to rovers, boats, balance bots, and even submarines.
-It is continually being expanded to provide support for new emerging vehicle types.
+# kontrol et
+ros2 topic list | grep 'mavros/state'
 
-## The ArduPilot project is made up of: ##
+# Bağlantıyı kontrol et:
+ros2 topic echo xxxxx --once
 
-- ArduCopter: [code](https://github.com/ArduPilot/ardupilot/tree/master/ArduCopter), [wiki](https://ardupilot.org/copter/index.html)
 
-- ArduPlane: [code](https://github.com/ArduPilot/ardupilot/tree/master/ArduPlane), [wiki](https://ardupilot.org/plane/index.html)
+manualControl topic???
+ros2 topic list | grep manual_control
 
-- Rover: [code](https://github.com/ArduPilot/ardupilot/tree/master/Rover), [wiki](https://ardupilot.org/rover/index.html)
+ros2 topic info /mavros/manual_control/send -v
+#MAVROS should be seen as subscriber
 
-- ArduSub : [code](https://github.com/ArduPilot/ardupilot/tree/master/ArduSub), [wiki](http://ardusub.com/)
+twist-manual kodunu çalıştır
 
-- Antenna Tracker : [code](https://github.com/ArduPilot/ardupilot/tree/master/AntennaTracker), [wiki](https://ardupilot.org/antennatracker/index.html)
+source /opt/ros/jazzy/setup.bash
+source ~/rov_ws/install/setup.bash
 
-## User Support & Discussion Forums ##
+ros2 run rov_autonomy twist_to_manual_control
 
-- Support Forum: <https://discuss.ardupilot.org/>
 
-- Community Site: <https://ardupilot.org>
 
-## Developer Information ##
+YOLO
+source /opt/ros/jazzy/setup.bash
+source ~/colcon_ws/install/setup.bash
 
-- Github repository: <https://github.com/ArduPilot/ardupilot>
+ros2 run ros_tcp_endpoint default_server_endpoint
 
-- Main developer wiki: <https://ardupilot.org/dev/>
+ros2 run rqt_image_view rqt_image_view
 
-- Developer discussion: <https://discuss.ardupilot.org>
+MANUAL CONTROL ECHO
 
-- Developer chat: <https://discord.com/channels/ardupilot>
+source /opt/ros/jazzy/setup.bash
+ros2 topic echo /mavros/manual_control/send
 
-## Top Contributors ##
 
-- [Flight code contributors](https://github.com/ArduPilot/ardupilot/graphs/contributors)
-- [Wiki contributors](https://github.com/ArduPilot/ardupilot_wiki/graphs/contributors)
-- [Most active support forum users](https://discuss.ardupilot.org/u?order=post_count&period=quarterly)
-- [Partners who contribute financially](https://ardupilot.org/about/Partners)
 
-## How To Get Involved ##
+movement twist 
 
-- The ArduPilot project is open source and we encourage participation and code contributions: [guidelines for contributors to the ardupilot codebase](https://ardupilot.org/dev/docs/contributing.html)
+timeout 2s ros2 topic pub --rate 20 \
+/rov/autonomy/cmd_vel \
+geometry_msgs/msg/Twist \
+"{linear: {x: 0.1, y: 0.0, z: 0.0},
+  angular: {x: 0.0, y: 0.0, z: 0.0}}"
+  
+timeout 2s ros2 topic pub --rate 20 \
+/rov/autonomy/cmd_vel \
+geometry_msgs/msg/Twist \
+"{linear: {x: 0.0, y: 0.0, z: 0.0},
+  angular: {x: 0.0, y: 0.0, z: 0.0}}" 
+  
+  
+  
+  
 
-- We have an active group of Beta Testers to help us improve our code: [release procedures](https://ardupilot.org/dev/docs/release-procedures.html)
 
-- Desired Enhancements and Bugs can be posted to the [issues list](https://github.com/ArduPilot/ardupilot/issues).
+ros2 launch alars_auv_perception alars_yolo_detector.launch.py \
+  robot_name:=ActiveHook_6T \
+  device:=cpu \
+  use_sim_time:=false \
+  model_package:=alars_labeling_training \
+  model_file:=yolo_model_2cls_mixed.pt \
+  raw_image_topic:=/ActiveHook_6T/camera/image_raw
+  
+  
+  
+  twist to manual control test;
+  
+  #mavros
+  
+source /opt/ros/jazzy/setup.bash
+ros2 run mavros mavros_node \
+  --ros-args \
+  -p 'fcu_url:=udp://0.0.0.0:14551@'
+  
+  #topic check et
+source /opt/ros/jazzy/setup.bash
 
-- Help other users with log analysis in the [support forums](https://discuss.ardupilot.org/)
+ros2 topic echo /mavros/state
 
-- Improve the wiki and chat with other [wiki editors on Discord #documentation](https://discord.com/channels/ardupilot)
+  #twist_to_manual_control
+source /opt/ros/jazzy/setup.bash
+source ~/rov_ws/install/setup.bash
 
-- Contact the developers on one of the [communication channels](https://ardupilot.org/copter/docs/common-contact-us.html)
+ros2 run rov_autonomy twist_to_manual_control
 
-## License ##
 
-The ArduPilot project is licensed under the GNU General Public
-License, version 3.
+  #manual_control msg
+source /opt/ros/jazzy/setup.bash
 
-- [Overview of license](https://ardupilot.org/dev/docs/license-gplv3.html)
+ros2 topic echo /mavros/manual_control/send
 
-- [Full Text](https://github.com/ArduPilot/ardupilot/blob/master/COPYING.txt)
 
-## Maintainers ##
+  #motor_outputs
+source /opt/ros/jazzy/setup.bash
 
-ArduPilot is comprised of several parts, vehicles and boards. The list below
-contains the people that regularly contribute to the project and are responsible
-for reviewing patches on their specific area.
+ros2 topic echo /mavros/rc/out
 
-- [Andrew Tridgell](https://github.com/tridge):
-  - ***Vehicle***: Plane, AntennaTracker
-  - ***Board***: Pixhawk, Pixhawk2, PixRacer
-- [Francisco Ferreira](https://github.com/oxinarf):
-  - ***Bug Master***
-- [Grant Morphett](https://github.com/gmorph):
-  - ***Vehicle***: Rover
-- [Willian Galvani](https://github.com/williangalvani):
-  - ***Vehicle***: Sub
-- [Lucas De Marchi](https://github.com/lucasdemarchi):
-  - ***Subsystem***: Linux
-- [Michael du Breuil](https://github.com/WickedShell):
-  - ***Subsystem***: Batteries
-  - ***Subsystem***: GPS
-  - ***Subsystem***: Scripting
-- [Peter Barker](https://github.com/peterbarker):
-  - ***Subsystem***: DataFlash, Tools
-- [Randy Mackay](https://github.com/rmackay9):
-  - ***Vehicle***: Copter, Rover, AntennaTracker
-- [Siddharth Purohit](https://github.com/bugobliterator):
-  - ***Subsystem***: CAN, Compass
-  - ***Board***: Cube*
-- [Tom Pittenger](https://github.com/magicrub):
-  - ***Vehicle***: Plane
-- [Bill Geyer](https://github.com/bnsgeyer):
-  - ***Vehicle***: TradHeli
-- [Emile Castelnuovo](https://github.com/emilecastelnuovo):
-  - ***Board***: VRBrain
-- [Georgii Staroselskii](https://github.com/staroselskii):
-  - ***Board***: NavIO
-- [Gustavo José de Sousa](https://github.com/guludo):
-  - ***Subsystem***: Build system
-- [Julien Beraud](https://github.com/jberaud):
-  - ***Board***: Bebop & Bebop 2
-- [Leonard Hall](https://github.com/lthall):
-  - ***Subsystem***: Copter attitude control and navigation
-- [Matt Lawrence](https://github.com/Pedals2Paddles):
-  - ***Vehicle***: 3DR Solo & Solo based vehicles
-- [Matthias Badaire](https://github.com/badzz):
-  - ***Subsystem***: FRSky
-- [Mirko Denecke](https://github.com/mirkix):
-  - ***Board***: BBBmini, BeagleBone Blue, PocketPilot
-- [Paul Riseborough](https://github.com/priseborough):
-  - ***Subsystem***: AP_NavEKF2
-  - ***Subsystem***: AP_NavEKF3
-- [Víctor Mayoral Vilches](https://github.com/vmayoral):
-  - ***Board***: PXF, Erle-Brain 2, PXFmini
-- [Amilcar Lucas](https://github.com/amilcarlucas):
-  - ***Subsystem***: Marvelmind
-- [Samuel Tabor](https://github.com/samuelctabor):
-  - ***Subsystem***: Soaring/Gliding
-- [Henry Wurzburg](https://github.com/Hwurzburg):
-  - ***Subsystem***: OSD
-  - ***Site***: Wiki
-- [Peter Hall](https://github.com/IamPete1):
-  - ***Vehicle***: Tailsitters
-  - ***Vehicle***: Sailboat
-  - ***Subsystem***: Scripting
-- [Andy Piper](https://github.com/andyp1per):
-  - ***Subsystem***: Crossfire
-  - ***Subsystem***: ESC
-  - ***Subsystem***: OSD
-  - ***Subsystem***: SmartAudio
-- [Alessandro Apostoli ](https://github.com/yaapu):
-  - ***Subsystem***: Telemetry
-  - ***Subsystem***: OSD
-- [Rishabh Singh ](https://github.com/rishabsingh3003):
-  - ***Subsystem***: Avoidance/Proximity
-- [David Bussenschutt ](https://github.com/davidbuzz):
-  - ***Subsystem***: ESP32,AP_HAL_ESP32
-- [Charles Villard ](https://github.com/Silvanosky):
-  - ***Subsystem***: ESP32,AP_HAL_ESP32
+  
+  #neutral test
+timeout 3s ros2 topic pub --rate 20 \
+/rov/autonomy/cmd_vel \
+geometry_msgs/msg/Twist \
+"{linear: {x: 0.0, y: 0.0, z: 0.0},
+  angular: {x: 0.0, y: 0.0, z: 0.0}}"
+  
+  
+  #ARM IN TERMINAL
+ros2 service call /mavros/cmd/arming \
+mavros_msgs/srv/CommandBool \
+"{value: true}"
+
+  #disarm ofcourse
+ros2 service call /mavros/cmd/arming \
+mavros_msgs/srv/CommandBool \
+"{value: false}"
+
+  #forward command
+timeout 3s ros2 topic pub --rate 20 \
+/rov/autonomy/cmd_vel \
+geometry_msgs/msg/Twist \
+"{linear: {x: 0.05, y: 0.0, z: 0.0},
+  angular: {x: 0.0, y: 0.0, z: 0.0}}"
+  
+  
+  
+  
+ 
+ 
+ source everything
+
+source /opt/ros/jazzy/setup.bash
+source ~/rov_ws/install/setup.bash
+
+
+1. ADIM
+
+source /opt/ros/jazzy/setup.bash
+
+ros2 run mavros mavros_node \
+  --ros-args \
+  -p 'fcu_url:=udp://0.0.0.0:14551@' \
+  -p system_id:=255 \
+  -p component_id:=191 \
+  -p target_system_id:=1 \
+  -p target_component_id:=1
+
+2. ADIM DOĞRULA
+
+source /opt/ros/jazzy/setup.bash
+
+ros2 topic echo /mavros/state --once
+
+
+3. ADIM LAUNCH ET
+
+source /opt/ros/jazzy/setup.bash
+source ~/rov_ws/install/setup.bash
+
+ros2 launch rov_autonomy rov_teleop.launch.py
+
+
+arm from terminal
+
+ros2 service call /mavros/cmd/arming mavros_msgs/srv/CommandBool "{value: true}"
+
+disarm
+
+ros2 service call /mavros/cmd/arming mavros_msgs/srv/CommandBool "{value: false}"
+
+
+DEĞİŞİKLİK YAPARSAN EĞER BUİLD ETMEYİ UNUTMA;
+
+
+cd ~/rov_ws
+
+source /opt/ros/jazzy/setup.bash
+
+colcon build --packages-select rov_autonomy --symlink-install
+
+source install/setup.bash
+
+```
