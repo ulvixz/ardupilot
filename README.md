@@ -19,16 +19,16 @@ Toolchain is required because Navigator is ARM (Raspberry Pi) and we're cross-co
 
 **3. Upload (Navigator + BlueOS)**
 Compiled file: `~/ardupilot/build/navigator/bin/ardusub`
-1. `blueos.local` → **Autopilot Firmware** → **Upload firmware file**
+1. Go to `blueos.local` on your browser → **Autopilot Firmware** → **Upload firmware file**
 2. Select `ardusub` → **Install firmware**
 3. **Restart autopilot**
 
 **4. Select the frame**
-Set `FRAME_CONFIG` to **Custom**.
+Go to Autopilot Parameters → Set `FRAME_CONFIG` to **Custom** .
 
 ## Current Motor Configuration (6 Thrusters)
 
-Defined in `libraries/AP_Motors/AP_Motors6DOF.cpp` → `case SUB_FRAME_CUSTOM:` (frame name: "ASIA MADELEINE").
+Defined in `libraries/AP_Motors/AP_Motors6DOF.cpp` → `case SUB_FRAME_CUSTOM:` (frame name: "ASIA MADELEINE", choosen by Ali&Philip, has a reason).
 
 | Motor | Roll | Pitch | Yaw | Throttle | Forward | Lateral | Role |
 |---|---|---|---|---|---|---|---|
@@ -43,7 +43,8 @@ Defined in `libraries/AP_Motors/AP_Motors6DOF.cpp` → `case SUB_FRAME_CUSTOM:` 
 
 ## Adding New Thrusters (e.g. 6 → 8)
 
-**Code** — `AP_MOTORS_MOT_7`/`MOT_8` already exist, no new defines needed. Add to the end of `case SUB_FRAME_CUSTOM:`:
+**Code** 
+`AP_MOTORS_MOT_7`/`MOT_8` already exist, no new defines needed. Add to the end of `case ASIA MADELEINE:`:
 
 ```cpp
 add_motor_raw_6dof(AP_MOTORS_MOT_7, <roll>, <pitch>, <yaw>, <throttle>, <forward>, <lateral>, 7);
