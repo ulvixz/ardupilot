@@ -32,14 +32,18 @@ Defined in `libraries/AP_Motors/AP_Motors6DOF.cpp` → `case SUB_FRAME_CUSTOM:` 
 
 | Motor | Roll | Pitch | Yaw | Throttle | Forward | Lateral | Role |
 |---|---|---|---|---|---|---|---|
-| 1 | +1.0 | +1.0 | 0 | +1.0 | 0 | 0 | Vertical corner |
-| 2 | 0 | 0 | +1.0 | 0 | +1.0 | 0 | Horizontal mid-wing |
-| 3 | +1.0 | -1.0 | 0 | +1.0 | 0 | 0 | Vertical corner |
-| 4 | 0 | 0 | -1.0 | 0 | +1.0 | 0 | Horizontal mid-wing |
-| 5 | -1.0 | +1.0 | 0 | +1.0 | 0 | 0 | Vertical corner |
-| 6 | -1.0 | -1.0 | 0 | +1.0 | 0 | 0 | Vertical corner |
+| 1 | +1.0 | +1.0 | 0 | +1.0 | 0 | 0 | front-left corner (Vertical)|
+| 2 | 0 | 0 | +1.0 | 0 | +1.0 | 0 | left mid (Horizontal) |
+| 3 | +1.0 | -1.0 | 0 | +1.0 | 0 | 0 | back-left corner (Vertical) |
+| 4 | 0 | 0 | -1.0 | 0 | +1.0 | 0 | right mid (Horizontal) |
+| 5 | -1.0 | +1.0 | 0 | +1.0 | 0 | 0 | front-right corner (Vertical) |
+| 6 | -1.0 | -1.0 | 0 | +1.0 | 0 | 0 | back-right corner (Vertical) |
 
 `lateral_fac` is 0 for every motor — no linear.y capability yet.
+
+## Propeller Rotation & Direction
+
+![Propeller directions](propeller_directions.png)
 
 ## Adding New Thrusters (e.g. 6 → 8)
 
@@ -54,5 +58,4 @@ add_motor_raw_6dof(AP_MOTORS_MOT_8, <roll>, <pitch>, <yaw>, <throttle>, <forward
 **Rebuild & reflash** — repeat steps 2–3 above.
 
 **Params** — set `SERVOx_FUNCTION` on the new outputs to `MotorX`, or you can just assign output 7 as motor7 and output 8 as motor8 in Vehicle Setup -> PWM Outputs page.
-
 
