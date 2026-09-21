@@ -23,6 +23,8 @@ Compiled file: `~/ardupilot/build/navigator/bin/ardusub`
 2. Select `ardusub` → **Install firmware**
 3. **Restart autopilot**
 
+**Important note:** You have to set RC3_TRIM to 1100 from parameters page.
+
 **4. Select the frame**
 Go to Autopilot Parameters → Set `FRAME_CONFIG` to **Custom** .
 
